@@ -1,0 +1,11 @@
+{
+  "name": "alumnest",
+  "private": true,
+  "scripts": {
+    "install:all": "npm i && npm i --prefix server && npm i --prefix client",
+    "setup": "npm run install:all && npm run seed",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "seed": "npm run seed --prefix server"
+  },
+  "devDependencies": { "concurrently": "^8.2.2" }
+}

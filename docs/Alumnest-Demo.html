@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alumnest – where alumni lift you up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f6fd;--ink:#14162b;--mut:#5f6784;--pri:#5b5bf0;--pri2:#ec4899;--card:rgba(255,255,255,.82);--solid:#fff;--line:rgba(91,91,240,.16);--shadow:0 12px 32px -14px rgba(60,60,160,.35);--ok:#157347;--okb:#d8f0e2;--no:#b02a37;--nob:#f8dcdf;--wa:#8a6100;--wab:#fdf0cc;--blob:.32;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0d1f;--ink:#eef0ff;--mut:#9ba3c7;--pri:#8b8dff;--card:rgba(24,27,58,.72);--solid:#181b3a;--line:rgba(139,147,255,.2);--shadow:0 12px 32px -14px rgba(0,0,0,.7);--ok:#6fdc9f;--okb:#12382a;--no:#ff8f9a;--nob:#431c22;--wa:#f3cd6a;--wab:#40330f;--blob:.2}}
+:root[data-theme="dark"]{--bg:#0b0d1f;--ink:#eef0ff;--mut:#9ba3c7;--pri:#8b8dff;--card:rgba(24,27,58,.72);--solid:#181b3a;--line:rgba(139,147,255,.2);--shadow:0 12px 32px -14px rgba(0,0,0,.7);--ok:#6fdc9f;--okb:#12382a;--no:#ff8f9a;--nob:#431c22;--wa:#f3cd6a;--wab:#40330f;--blob:.2}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100%}
+body::before,body::after{content:"";position:fixed;z-index:-1;width:46vmax;height:46vmax;border-radius:50%;filter:blur(90px);opacity:var(--blob);animation:float 18s ease-in-out infinite alternate;pointer-events:none}
+body::before{background:#6366f1;top:-16vmax;left:-12vmax}body::after{background:#ec4899;bottom:-20vmax;right:-14vmax;animation-delay:-7s}
+header{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;padding:12px clamp(14px,4vw,40px);background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5;animation:down .6s cubic-bezier(.2,.8,.2,1) both}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.25em;letter-spacing:-.02em;margin-right:auto}.brand svg{transition:transform .5s cubic-bezier(.3,1.6,.5,1)}.brand:hover svg{transform:rotate(-12deg) scale(1.12)}
+.gt{background:linear-gradient(90deg,var(--pri),var(--pri2),var(--pri));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+header a{cursor:pointer;color:var(--mut);padding:4px 2px;position:relative;font-weight:600;transition:color .2s}header a:hover,header a.on{color:var(--ink)}
+header a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--pri),var(--pri2));transform:scaleX(0);transition:transform .3s}header a.on::after,header a:hover::after{transform:scaleX(1)}
+main{max-width:1080px;margin:0 auto;padding:24px clamp(14px,4vw,40px) 70px}
+h1{font-size:1.9em;font-weight:800;letter-spacing:-.025em;margin:0 0 16px}h2{font-size:1.1em;font-weight:700;margin:0 0 10px}
+#v>*{animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) both}#v>*:nth-child(2){animation-delay:.05s}#v>*:nth-child(3){animation-delay:.1s}#v>*:nth-child(4){animation-delay:.15s}
+input,select,textarea,button{font:inherit;color:var(--ink)}
+input,select,textarea{background:var(--solid);border:1px solid var(--line);border-radius:10px;padding:9px 12px;width:100%;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--pri);box-shadow:0 0 0 4px color-mix(in srgb,var(--pri) 20%,transparent)}
+button{cursor:pointer;border:1px solid var(--line);background:var(--solid);border-radius:10px;padding:8px 16px;font-weight:600;transition:transform .15s,box-shadow .2s,border-color .2s}
+button:hover{border-color:var(--pri);transform:translateY(-1px)}button:active{transform:scale(.96)}
+button.p{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:0;box-shadow:0 8px 20px -8px var(--pri)}button.p:hover{box-shadow:0 12px 26px -8px var(--pri2);filter:brightness(1.06)}
+button:disabled{opacity:.45;cursor:default}:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+a{color:var(--pri)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}.row>*{flex:1 1 160px}.row>input:first-child{flex:3 1 240px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.stats>div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center;box-shadow:var(--shadow)}
+.stats b{display:block;font-size:1.9em;font-weight:800;line-height:1.1;background:linear-gradient(90deg,var(--pri),var(--pri2));-webkit-background-clip:text;background-clip:text;color:transparent}.stats span{color:var(--mut);font-size:.85em}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}.grid.in>.card{animation:pop .55s cubic-bezier(.2,.9,.3,1.2) both}
+.card{background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+.card.c{cursor:pointer}.card.c:hover{transform:translateY(-6px);border-color:var(--pri);box-shadow:0 22px 44px -16px color-mix(in srgb,var(--pri) 55%,transparent)}
+.av{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.15em;flex:none;box-shadow:0 6px 14px -6px rgba(0,0,0,.4);transition:transform .4s cubic-bezier(.3,1.6,.5,1)}.card.c:hover .av{transform:rotate(-8deg) scale(1.1)}
+.mut{color:var(--mut);font-size:.9em}.chip{display:inline-block;background:color-mix(in srgb,var(--pri) 12%,transparent);color:var(--pri);border-radius:999px;padding:2px 10px;font-size:.78em;font-weight:600;margin:4px 5px 0 0}
+.badge{padding:3px 12px;border-radius:999px;font-size:.78em;font-weight:700;white-space:nowrap;align-self:flex-start}
+.Pending{background:var(--wab);color:var(--wa);animation:pulse 2s ease-in-out infinite}.Accepted{background:var(--okb);color:var(--ok);animation:pop .5s both}.Rejected{background:var(--nob);color:var(--no);animation:pop .5s both}
+.flex{display:flex;gap:12px;align-items:center}.sp{justify-content:space-between;align-items:flex-start}
+.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}form>*{margin-bottom:10px}
+.hero{text-align:center;margin:30px auto 0}.hero h1{font-size:clamp(2.6rem,8vw,4.2rem);margin:0;line-height:1.05}.hero p{color:var(--mut);margin:6px 0 0;font-size:1.05em}
+.auth{max-width:410px;margin:22px auto}.auth h1{font-size:1.5em}
+.hint button{margin:4px 6px 0 0;font-size:.85em;padding:5px 14px;border-radius:999px}
+#m{position:fixed;inset:0;display:none;background:rgba(8,10,30,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:16px;z-index:20}#m.on{display:flex;animation:fade .25s both}
+#m .card{max-width:480px;width:100%;max-height:90%;overflow:auto;animation:pop .4s cubic-bezier(.2,.9,.3,1.25) both;background:var(--solid)}
+#t{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;padding:10px 20px;border-radius:999px;display:none;z-index:30;font-weight:600;box-shadow:0 14px 30px -10px var(--pri);animation:toast .4s cubic-bezier(.2,.9,.3,1.3) both}
+small.err,.err{color:var(--no);font-size:.8em;display:block;min-height:0;margin:-4px 0 8px}
+.otp{text-align:center;letter-spacing:.45em;font-size:1.6em;font-weight:800}
+.mail{max-width:410px;margin:0 auto 22px;border-style:dashed}.code{font-size:2em;font-weight:800;letter-spacing:.3em;text-align:center;margin:8px 0;background:linear-gradient(90deg,var(--pri),var(--pri2));-webkit-background-clip:text;background-clip:text;color:transparent}
+input[type=checkbox],input[type=radio],input[type=file]{width:auto}
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}.tab{border-radius:999px;padding:6px 16px}.tab.on{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:0}
+.chat{display:grid;grid-template-columns:220px 1fr;gap:14px}@media(max-width:700px){.chat{grid-template-columns:1fr}}
+.cl{padding:10px 12px;border-radius:12px;cursor:pointer;transition:background .2s}.cl:hover,.cl.on{background:color-mix(in srgb,var(--pri) 14%,transparent)}
+.msgs{height:320px;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:6px 2px;margin:8px 0}
+.b{max-width:78%;padding:8px 13px;border-radius:16px;background:var(--solid);border:1px solid var(--line);animation:pop .3s both}.b.me{align-self:flex-end;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border:0}.b .mut{font-size:.7em}.b.me .mut{color:#fff;opacity:.8}
+.post{margin-bottom:12px}.post .rep{margin:8px 0 0 12px;padding-left:12px;border-left:2px solid var(--line)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes down{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+@keyframes toast{from{opacity:0;transform:translate(-50%,24px) scale(.9)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(6vmax,5vmax) scale(1.15)}}
+@keyframes shine{to{background-position:-200% 0}}
+@keyframes pulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--wa) 18%,transparent)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header id="nav"></header><main id="v"></main><div id="m"></div><div id="t" role="status"></div>
+<script>
+var LOGO='<svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><rect width="32" height="32" rx="10" fill="url(#lg)"/><path d="M7.5 22c0-5.2 3.7-9 8.5-9s8.5 3.8 8.5 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="16" cy="9" r="3.2" fill="#fff"/></svg>',BRAND='<b class="brand">'+LOGO+'<span class="gt">Alumnest</span></b>';
+var K='ac_db_v1',view='directory',mode='login',db=load(),me=null;
+try{me=sessionStorage.getItem('ac_me');view=sessionStorage.getItem('ac_view')||view}catch(e){}
+function uid(){return Math.random().toString(36).slice(2,10)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function load(){var d=null;try{d=JSON.parse(localStorage.getItem(K))}catch(e){}if(!(d&&d.users))d=seed();d.conns=d.conns||[];d.msgs=d.msgs||[];d.sessions=d.sessions||[];d.sj=d.sj||{};d.ap=d.ap||{};if(!d.posts)d.posts=seedPosts();return d}
+function seedPosts(){var n=Date.now(),H=36e5;return [
+ {id:'c1',by:'a1',type:'Success story',text:'Cracked my Google interview after 3 months of DSA and system design practice. Happy to share my study plan with juniors!',at:n-48*H,likes:[],replies:[]},
+ {id:'c2',by:'s1',type:'Question',text:'How should I prepare for product-company internships in 3rd year? Which topics matter most?',at:n-5*H,likes:[],replies:[{by:'a2',text:'Focus on DSA basics, one solid project and clear communication. Ask me for a mock interview!',at:n-3*H}]},
+ {id:'c3',by:'a3',type:'Event',text:'Webinar: Breaking into Data Engineering. Live Q&A with alumni from Amazon and Zoho.',when:n+3*24*H,at:n-24*H,likes:[],replies:[]},
+ {id:'c4',by:'a2',type:'Post',text:'We are hiring interns at Microsoft this season. Check the Jobs tab and ask for a referral!',at:n-8*H,likes:[],replies:[]}]}
+function save(){try{localStorage.setItem(K,JSON.stringify(db))}catch(e){}}
+function seed(){
+  var d={users:[],profiles:[],jobs:[],refs:[]};
+  d.users.push({id:'s1',name:'Demo Student',email:'student@demo.com',password:'password123',role:'student'});
+  d.users.push({id:'ad',name:'Demo Admin',email:'admin@demo.com',password:'password123',role:'admin'});
+  [['Priya Raman',2019,'CSE','Google','Software Engineer',['React','Node.js','System Design']],
+   ['Arjun Kumar',2020,'IT','Microsoft','SDE II',['Azure','C#','MongoDB']],
+   ['Meera Nair',2018,'ECE','Amazon','Data Engineer',['Python','AWS','Spark']],
+   ['Karthik S',2021,'CSE','Zoho','Backend Developer',['Java','SQL','Spring']],
+   ['Divya Menon',2019,'IT','Google','Product Analyst',['SQL','Tableau','Python']],
+   ['Rahul Verma',2022,'CSE','Infosys','Full Stack Developer',['React','Express','MongoDB']]
+  ].forEach(function(a,i){var id='a'+(i+1);
+    d.users.push({id:id,name:a[0],email:'alumni'+(i+1)+'@demo.com',password:'password123',role:'alumni'});
+    d.profiles.push({id:'p'+(i+1),user:id,name:a[0],year:a[1],dept:a[2],company:a[3],title:a[4],skills:a[5],linkedin:'https://linkedin.com',bio:a[4]+' at '+a[3]+'. Happy to guide juniors on interviews and referrals.'});
+    d.jobs.push({id:'j'+(i+1),by:id,title:a[4]+' Intern',company:a[3],desc:'Open to final-year students. Referral available for strong profiles.',link:'https://example.com/apply',at:Date.now()-i*86400000});
+  });
+  return d;
+}
+function U(id){return db.users.filter(function(u){return u.id===id})[0]}
+function cur(){return me&&U(me)}
+function toast(s){var t=document.getElementById('t');t.textContent=s;t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(function(){t.style.display='none'},2600)}
+function go(v){view=v;try{sessionStorage.setItem('ac_view',v)}catch(e){}render()}
+function badge(s){return '<span class="badge '+s+'">'+s+'</span>'}
+
+function render(){
+  var u=cur(),n=document.getElementById('nav');
+  if(!u){me=null;n.innerHTML=BRAND;return pend?otpView():authView()}
+  if((view==='dash'&&u.role!=='alumni')||(view==='mine'&&u.role!=='student'))view='home';
+  var l=[['home','Home'],['directory','Explore'],['jobs','Jobs'],['chat','Messages'],['comm','Community'],['prof','Profile']];
+  n.innerHTML=BRAND+l.map(function(x){return '<a class="'+(view===x[0]?'on':'')+'" onclick="go(\''+x[0]+'\')">'+x[1]+'</a>'}).join('')+'<span class="mut">'+esc(u.name)+' ('+u.role+')</span><button onclick="logout()">Log out</button>';
+  var f={home:homeView,directory:dirView,jobs:jobsView,mine:mineView,dash:dashView,chat:chatView,comm:commView,prof:profView}[view]||homeView;f();
+}
+
+/* ---------- auth ---------- */
+function authView(){
+  var r=mode==='register';setTimeout(vld,0);
+  document.getElementById('v').innerHTML='<div class="hero"><h1><span class="gt">Alumnest</span></h1><p>Where alumni lift you up. Find mentors, get referrals, land the job.</p></div><form class="card auth" novalidate oninput="vld()" onsubmit="doAuth(event)"><h1>'+(r?'Create account':'Welcome back')+'</h1>'
+  +(r?'<input name="name" placeholder="Full name" autocomplete="name"><small class="err" id="en"></small>':'')
+  +'<input name="email" type="text" inputmode="email" autocomplete="email" placeholder="Email (name@example.com)"><small class="err" id="ee"></small><input name="password" type="password" autocomplete="'+(r?'new-password':'current-password')+'" placeholder="'+(r?'Password (8+ chars, letter and number)':'Password')+'"><small class="err" id="ep"></small>'
+  +(r?'<select name="role"><option value="student">I am a student</option><option value="alumni">I am an alumnus</option></select>':'')
+  +'<button class="p" id="sb" style="width:100%" disabled>'+(r?'Register':'Log in')+'</button>'
+  +'<p class="mut">'+(r?'Have an account? <a href="#" onclick="mode=\'login\';render();return false">Log in</a>':'New here? <a href="#" onclick="mode=\'register\';render();return false">Register</a>')+'</p>'
+  +(r?'':'<div class="hint mut">Demo accounts (still need the emailed code):<br><button type="button" onclick="quick(\'student@demo.com\')">Student</button><button type="button" onclick="quick(\'alumni1@demo.com\')">Alumni</button><button type="button" onclick="quick(\'admin@demo.com\')">Admin</button></div>')+'</form>';
+}
+var pend=null;try{pend=JSON.parse(sessionStorage.getItem('ac_otp'))}catch(e){}
+/* ===== REAL EMAIL (optional) =====
+   To get the code in Gmail, fill these 3 values from your free EmailJS account (see docs/GMAIL_OTP_SETUP.md).
+   Works when you open this file from your computer. The hosted preview page blocks outside connections, so it shows the demo inbox. */
+var EMAILJS={service:'',template:'',key:''};
+var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/,PW_REG=/^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+function vld(){var f=document.querySelector('form.auth'),b=document.getElementById('sb');if(!f||!b)return;var r=mode==='register',E=f.elements,em=E.email.value.trim(),pw=E.password.value,ok=true;
+  function set(id,bad,msg){var e=document.getElementById(id);if(e)e.textContent=bad?msg:'';if(bad)ok=false}
+  set('ee',em&&!EMAIL_RE.test(em),'Enter a valid email like name@example.com');if(!EMAIL_RE.test(em))ok=false;
+  var pbad=r?!PW_REG.test(pw):pw.length<6;set('ep',pw&&pbad,r?'Use 8+ characters with at least one letter and one number':'Password must be at least 6 characters');if(!pw||pbad)ok=false;
+  if(r){var n=E.name.value.trim();set('en',n&&n.length<2,'Enter your full name');if(n.length<2)ok=false}
+  b.disabled=!ok}
+function mask(e){var a=e.split('@');return a[0].slice(0,1)+'***@'+a[1]}
+function startOtp(u){var c=String(100000+crypto.getRandomValues(new Uint32Array(1))[0]%900000);pend={uid:u.id,code:c,exp:Date.now()+300000,tries:0,sent:Date.now(),real:false,note:''};
+  var keep=function(){try{sessionStorage.setItem('ac_otp',JSON.stringify(pend))}catch(e){}};keep();
+  if(!(EMAILJS.service&&EMAILJS.template&&EMAILJS.key))return otpView();
+  toast('Sending code to your email...');
+  fetch('https://api.emailjs.com/api/v1.0/email/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({service_id:EMAILJS.service,template_id:EMAILJS.template,user_id:EMAILJS.key,template_params:{to_email:u.email,to_name:u.name,otp:c,app_name:'Alumnest'}})})
+   .then(function(r){if(!r.ok)throw new Error('send failed');pend.real=true;keep();otpView();toast('Code sent to '+mask(u.email))})
+   .catch(function(){pend.note='Could not send a real email (check your EmailJS values and internet). The code is shown below instead.';keep();otpView()})}
+function otpView(){var u=U(pend.uid);
+  document.getElementById('v').innerHTML='<div class="hero"><h1><span class="gt">Verify your email</span></h1><p>We sent a 6-digit code to <b>'+esc(mask(u.email))+'</b></p></div>'
+  +'<form class="card auth" onsubmit="checkOtp(event)"><input id="otp" class="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="------" oninput="this.value=this.value.replace(/\\D/g,\'\')"><small class="err" id="oerr"></small><button class="p" style="width:100%">Verify and continue</button><p class="mut"><button type="button" id="rs" onclick="resend()">Resend code</button> <a href="#" onclick="cancelOtp();return false">Use a different account</a></p></form>'
+  +(pend.real?'<div class="card mail"><div class="mut">Check your Gmail inbox (and the Spam folder) for the 6-digit code from Alumnest. The code is not shown on this page.</div></div>':'<div class="card mail" id="mail">'+(pend.note?'<div class="err">'+esc(pend.note)+'</div>':'')+'<div class="mut">Demo inbox: this page cannot send real email, so the message appears here. To receive it in Gmail, use the downloaded file with EmailJS or the MERN project (see docs/GMAIL_OTP_SETUP.md).</div><p><b>To:</b> '+esc(u.email)+'<br><b>Subject:</b> Your Alumnest verification code</p><div class="code">'+pend.code+'</div><div class="mut">Valid for 5 minutes. Never share this code.</div></div>');tick()}
+function tick(){var b=document.getElementById('rs');if(!b||!pend)return;var left=30-Math.floor((Date.now()-pend.sent)/1000);if(left>0){b.disabled=true;b.textContent='Resend in '+left+'s';setTimeout(tick,500)}else{b.disabled=false;b.textContent='Resend code'}}
+function checkOtp(e){e.preventDefault();var v=document.getElementById('otp').value.trim(),er=document.getElementById('oerr');
+  if(Date.now()>pend.exp){er.textContent='Code expired. Please resend.';return}
+  if(v.length<6){er.textContent='Enter the 6-digit code';return}
+  if(v!==pend.code){pend.tries++;try{sessionStorage.setItem('ac_otp',JSON.stringify(pend))}catch(x){}if(pend.tries>=5){cancelOtp();return toast('Too many wrong codes. Please log in again.')}er.textContent='Incorrect code. '+(5-pend.tries)+' attempts left.';return}
+  var u=U(pend.uid);pend=null;try{sessionStorage.removeItem('ac_otp')}catch(x){}setMe(u)}
+function resend(){startOtp(U(pend.uid));toast('New code sent')}
+function cancelOtp(){pend=null;try{sessionStorage.removeItem('ac_otp')}catch(e){}render()}
+function setMe(u){me=u.id;try{sessionStorage.setItem('ac_me',me)}catch(e){}view='home';try{sessionStorage.setItem('ac_view',view)}catch(e){}render()}
+function quick(e){startOtp(db.users.filter(function(u){return u.email===e})[0])}
+function doAuth(e){
+  e.preventDefault();var f=new FormData(e.target),em=(f.get('email')||'').trim().toLowerCase(),ex=db.users.filter(function(u){return u.email===em})[0];
+  if(!EMAIL_RE.test(em))return toast('Please enter a valid email address');
+  if(mode==='register'){
+    if(ex)return toast('Email already registered');if(!PW_REG.test(f.get('password')))return toast('Password needs 8+ characters with a letter and a number');
+    var u={id:uid(),name:f.get('name').trim(),email:em,password:f.get('password'),role:f.get('role')};db.users.push(u);save();return startOtp(u);
+  }
+  if(!ex||ex.password!==f.get('password'))return toast('Invalid credentials');startOtp(ex);
+}
+function logout(){me=null;try{sessionStorage.removeItem('ac_me');sessionStorage.removeItem('ac_view')}catch(e){}render()}
+
+/* ---------- directory ---------- */
+function stat(n,l){return '<div><b data-n="'+n+'">0</b><span>'+l+'</span></div>'}
+function cos(){var s={};db.profiles.forEach(function(p){s[p.company]=1});return Object.keys(s).length}
+function avs(n){var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))%360;return 'background:linear-gradient(135deg,hsl('+h+',75%,58%),hsl('+((h+55)%360)+',80%,50%))'}
+function countUp(){[].forEach.call(document.querySelectorAll('[data-n]'),function(e){var t=+e.dataset.n,st=null;if(matchMedia('(prefers-reduced-motion:reduce)').matches){e.textContent=t;return}function f(ts){if(!st)st=ts;var k=Math.min(1,(ts-st)/900);e.textContent=Math.round(t*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)})}
+function opts(k){var s={};db.profiles.forEach(function(p){s[p[k]]=1});return Object.keys(s).sort().reverse().map(function(x){return '<option>'+esc(x)+'</option>'}).join('')}
+function dirView(){
+  document.getElementById('v').innerHTML='<h1>Alumni directory</h1><div class="stats">'+stat(db.profiles.length,'Alumni')+stat(cos(),'Companies')+stat(db.jobs.length,'Open jobs')+'</div><div class="row"><input id="q" placeholder="Search name, company, role or skill..." oninput="drawGrid()"><select id="c" onchange="drawGrid()"><option value="">All companies</option>'+opts('company')+'</select><select id="y" onchange="drawGrid()"><option value="">All years</option>'+opts('year')+'</select><select id="d" onchange="drawGrid()"><option value="">All departments</option>'+opts('dept')+'</select><button style="flex:0 0 auto" onclick="clr()">Clear</button></div><p class="mut" id="cnt"></p><div class="grid" id="g"></div>';
+  drawGrid(true);countUp();
+}
+function clr(){['q','c','y','d'].forEach(function(i){document.getElementById(i).value=''});drawGrid()}
+function drawGrid(a){
+  var q=document.getElementById('q').value.toLowerCase(),c=document.getElementById('c').value,y=document.getElementById('y').value,d=document.getElementById('d').value;
+  var r=db.profiles.filter(function(p){if(!prefs(U(p.user)).visible)return false;
+    var hay=(p.name+' '+p.company+' '+p.title+' '+p.skills.join(' ')).toLowerCase();
+    return (!q||hay.indexOf(q)>-1)&&(!c||p.company===c)&&(!y||String(p.year)===y)&&(!d||p.dept===d)});
+  document.getElementById('cnt').textContent=r.length+' alumni found';
+  document.getElementById('g').className='grid'+(a?' in':'');
+  document.getElementById('g').innerHTML=r.map(function(p,i){return '<div class="card c" style="animation-delay:'+Math.min(i,10)*55+'ms" onclick="openProf(\''+p.id+'\')"><div class="flex"><div class="av" style="'+avs(p.name)+'">'+esc(p.name[0])+'</div><div><b>'+esc(p.name)+'</b><div class="mut">Class of '+p.year+' · '+esc(p.dept)+'</div></div></div><p>'+esc(p.title)+' @ <b>'+esc(p.company)+'</b></p>'+p.skills.slice(0,4).map(function(s){return '<span class="chip">'+esc(s)+'</span>'}).join('')+'</div>'}).join('')||'<p class="mut">No alumni match. Clear a filter to see more.</p>';
+}
+function modal(h){var m=document.getElementById('m');m.innerHTML='<div class="card" onclick="event.stopPropagation()">'+h+'</div>';m.className='on';m.onclick=closeM}
+function closeM(){document.getElementById('m').className=''}
+function openProf(id){
+  var p=db.profiles.filter(function(x){return x.id===id})[0],u=cur();
+  modal('<div class="flex sp"><div><h2>'+esc(p.name)+'</h2><div>'+esc(p.title)+' @ '+esc(p.company)+'</div><div class="mut">'+esc(p.dept)+' · Class of '+p.year+'</div></div><button onclick="closeM()" aria-label="Close">✕</button></div><p>'+esc(p.bio)+'</p>'+p.skills.map(function(s){return '<span class="chip">'+esc(s)+'</span>'}).join('')+'<p><a href="'+esc(p.linkedin)+'" target="_blank" rel="noreferrer">LinkedIn profile</a></p>'
+  +(u.role==='student'?'<p>'+connBtn(p.user)+'</p><textarea id="msg" rows="3" placeholder="Introduce yourself and say why you want a referral..."></textarea><button class="p" style="width:100%;margin-top:8px" onclick="sendRef(\''+p.user+'\',\'\')">Request referral</button>':''));
+}
+function sendRef(aid,jid){
+  var m=document.getElementById('msg'),msg=m.value.trim();if(!msg)return toast('Write a short message first');
+  var dup=db.refs.some(function(r){return r.student===me&&r.alumni===aid&&r.job===jid&&r.status==='Pending'});
+  if(dup)return toast('You already have a pending request here');
+  db.refs.push({id:uid(),student:me,alumni:aid,job:jid,message:msg,status:'Pending',at:Date.now()});save();closeM();toast('Referral request sent');
+}
+
+/* ---------- jobs ---------- */
+function jobsView(){
+  var st=cur().role==='student';
+  document.getElementById('v').innerHTML='<h1>Job and referral board</h1><div class="grid in">'+(db.jobs.slice().sort(function(a,b){return b.at-a.at}).map(function(j){
+    return '<div class="card"><h2>'+esc(j.title)+'</h2><div style="color:var(--pri)">'+esc(j.company)+'</div><p>'+esc(j.desc)+'</p><p class="mut">Posted by '+esc((U(j.by)||{}).name)+'</p><div class="flex"><a href="'+esc(j.link)+'" target="_blank" rel="noreferrer">Apply</a>'+(st?'<button class="p" style="margin-left:auto" onclick="askJob(\''+j.id+'\')">Ask for referral</button>':'')+'</div></div>'}).join('')||'<p class="mut">No jobs yet.</p>')+'</div>';
+}
+function askJob(id){
+  var j=db.jobs.filter(function(x){return x.id===id})[0];
+  modal('<h2>Referral for '+esc(j.title)+'</h2><p class="mut">Request goes to '+esc(U(j.by).name)+' at '+esc(j.company)+'.</p><textarea id="msg" rows="4" placeholder="Why are you a good fit?"></textarea><div class="flex" style="margin-top:8px"><button onclick="closeM()">Cancel</button><button class="p" style="margin-left:auto" onclick="sendRef(\''+j.by+'\',\''+j.id+'\')">Send request</button></div>');
+}
+
+/* ---------- student ---------- */
+function mineView(){
+  var r=db.refs.filter(function(x){return x.student===me}).sort(function(a,b){return b.at-a.at});
+  document.getElementById('v').innerHTML='<h1>My referral requests</h1>'+(r.length?r.map(function(x){var j=db.jobs.filter(function(k){return k.id===x.job})[0];
+    return '<div class="card flex sp" style="margin-bottom:10px"><div><b>'+esc(U(x.alumni).name)+'</b>'+(j?' <span class="mut">· '+esc(j.title)+' at '+esc(j.company)+'</span>':'')+'<p>'+esc(x.message)+'</p><span class="mut">'+new Date(x.at).toLocaleString()+'</span></div>'+badge(x.status)+'</div>'}).join(''):'<p class="mut">No requests yet. Open an alumnus in the directory and send one.</p>');
+}
+
+/* ---------- alumni ---------- */
+function dashView(){
+  var p=db.profiles.filter(function(x){return x.user===me})[0]||{},inbox=db.refs.filter(function(x){return x.alumni===me}).sort(function(a,b){return b.at-a.at});
+  var f=function(n,ph,v,t){return '<input name="'+n+'" placeholder="'+ph+'" value="'+esc(v)+'" '+(t||'')+' required>'};
+  document.getElementById('v').innerHTML='<h1>Alumni dashboard</h1><div class="two"><form class="card" onsubmit="saveProf(event)"><h2>My profile</h2>'+f('year','Graduation year',p.year||'','type=number')+f('dept','Department',p.dept||'')+f('company','Current company',p.company||'')+f('title','Job title',p.title||'')+'<input name="skills" placeholder="Skills, comma separated" value="'+esc((p.skills||[]).join(', '))+'"><input name="linkedin" placeholder="LinkedIn URL" value="'+esc(p.linkedin||'')+'"><textarea name="bio" rows="3" placeholder="Short bio">'+esc(p.bio||'')+'</textarea><button class="p">Save profile</button></form>'
+  +'<form class="card" onsubmit="postJob(event)" style="align-self:start"><h2>Post a job</h2><input name="title" placeholder="Job title" required><input name="company" placeholder="Company" value="'+esc(p.company||'')+'" required><textarea name="desc" rows="3" placeholder="Description" required></textarea><input name="link" type="url" placeholder="Apply link (https://...)" required><button class="p">Post job</button></form></div>'
+  +'<h2 style="margin-top:22px">Referral requests received</h2>'+(inbox.length?inbox.map(function(x){return '<div class="card flex sp" style="margin-bottom:10px"><div><b>'+esc(U(x.student).name)+'</b> <span class="mut">'+esc(U(x.student).email)+'</span><p>'+esc(x.message)+'</p></div>'+(x.status==='Pending'?'<div class="flex"><button class="p" onclick="decide(\''+x.id+'\',\'Accepted\')">Accept</button><button onclick="decide(\''+x.id+'\',\'Rejected\')">Reject</button></div>':badge(x.status))+'</div>'}).join(''):'<p class="mut">No requests yet.</p>');
+}
+function saveProf(e){
+  e.preventDefault();var f=new FormData(e.target),u=cur(),p=db.profiles.filter(function(x){return x.user===me})[0];
+  var n={user:me,name:u.name,year:Number(f.get('year')),dept:f.get('dept').trim(),company:f.get('company').trim(),title:f.get('title').trim(),skills:f.get('skills').split(',').map(function(s){return s.trim()}).filter(Boolean),linkedin:f.get('linkedin')||'#',bio:f.get('bio')};
+  if(p)Object.assign(p,n);else{n.id='p'+uid();db.profiles.push(n)}save();dashView();toast('Profile saved. You now appear in the directory.');
+}
+function postJob(e){e.preventDefault();var f=new FormData(e.target);db.jobs.push({id:uid(),by:me,title:f.get('title'),company:f.get('company'),desc:f.get('desc'),link:f.get('link'),at:Date.now()});save();e.target.reset();toast('Job posted')}
+function decide(id,s){var r=db.refs.filter(function(x){return x.id===id&&x.alumni===me})[0];if(r){r.status=s;save();render();toast('Request '+s.toLowerCase())}}
+
+/* ===== v3: Home, Messages & mentorship, Community, Jobs tabs, Profile & settings ===== */
+const $=id=>document.getElementById(id);
+const ago=t=>{const x=(Date.now()-t)/1000;return x<60?'just now':x<3600?Math.floor(x/60)+'m ago':x<86400?Math.floor(x/3600)+'h ago':Math.floor(x/86400)+'d ago'};
+const prefs=u=>Object.assign({visible:true,allowConn:true,showEmail:false,nConn:true,nMsg:true,nSess:true,nComm:true},(u&&u.set)||{});
+const connOf=(a,b)=>db.conns.find(c=>(c.from===a&&c.to===b)||(c.from===b&&c.to===a));
+const myConns=()=>db.conns.filter(c=>c.status==='Accepted'&&(c.from===me||c.to===me)).map(c=>c.from===me?c.to:c.from);
+const SC={Requested:'Pending',Scheduled:'Accepted',Completed:'Accepted',Declined:'Rejected'};
+const sec=(t,h)=>`<div class="card" style="margin-bottom:16px"><h2>${t}</h2>${h}</div>`;
+function connBtn(aid){const c=connOf(me,aid);
+  if(c&&c.status==='Accepted')return `<span class="chip">Connected</span> <button type="button" onclick="closeM();go('chat')">Message</button>`;
+  if(c&&c.status==='Pending')return `<span class="chip">Connection request pending</span>`;
+  return `<button type="button" onclick="connect('${aid}')">Connect</button>`}
+function connect(aid){const a=U(aid);if(!prefs(a).allowConn)return toast('This alumnus is not accepting requests right now');
+  if(connOf(me,aid)&&connOf(me,aid).status!=='Declined')return toast('Already requested');db.conns=db.conns.filter(c=>!(c.from===me&&c.to===aid));
+  db.conns.push({id:uid(),from:me,to:aid,status:'Pending',at:Date.now()});save();closeM();toast('Connection request sent')}
+function connAct(id,st){const c=db.conns.find(x=>x.id===id);if(c){c.status=st;save();render();toast(st==='Accepted'?'Connected! You can now chat.':'Request declined')}}
+function sessRow(x){const o=U(x.student===me?x.alumni:x.student),al=x.alumni===me;
+  const act=x.status==='Requested'&&al?`<button class="p" onclick="sessAct('${x.id}','Scheduled')">Accept</button><button onclick="sessAct('${x.id}','Declined')">Decline</button>`:x.status==='Scheduled'?`<button onclick="sessAct('${x.id}','Completed')">Mark completed</button>`:'';
+  return `<div class="flex sp" style="margin-bottom:10px;flex-wrap:wrap"><div><b>${esc(x.topic)}</b><div class="mut">with ${esc(o.name)} · ${new Date(x.when).toLocaleString()}</div></div><div class="flex"><span class="badge ${SC[x.status]}">${x.status}</span>${act}</div></div>`}
+function sessAct(id,st){const x=db.sessions.find(k=>k.id===id);if(x){x.status=st;save();view==='chat'?chatView():render();toast('Session '+st.toLowerCase())}}
+
+/* ---- Home / dashboard ---- */
+function homeView(){const u=cur(),al=u.role==='alumni',st=u.role==='student';
+  const up=db.sessions.filter(x=>(x.student===me||x.alumni===me)&&(x.status==='Scheduled'||x.status==='Requested')).sort((a,b)=>a.when-b.when);
+  const inc=db.conns.filter(c=>c.to===me&&c.status==='Pending');
+  const pend=db.refs.filter(r=>(st?r.student:r.alumni)===me&&r.status==='Pending').length;
+  let top;
+  if(al)top=sec('Connection requests',inc.length?inc.map(c=>`<div class="flex sp" style="margin-bottom:8px"><span><b>${esc(U(c.from).name)}</b> wants to connect</span><span class="flex"><button class="p" onclick="connAct('${c.id}','Accepted')">Accept</button><button onclick="connAct('${c.id}','Declined')">Decline</button></span></div>`).join(''):'<p class="mut">No pending connection requests.</p>');
+  else{const mine=new Set((u.skills||[]).map(k=>k.toLowerCase()));
+    const rec=db.profiles.filter(p=>p.user!==me&&prefs(U(p.user)).visible).map(p=>({p,n:p.skills.filter(k=>mine.has(k.toLowerCase())).length})).sort((a,b)=>b.n-a.n||b.p.year-a.p.year).slice(0,3);
+    top=sec('Recommended mentors',`<p class="mut">${mine.size?'Matched to your skills.':'Add skills in Profile for better matches.'}</p><div class="grid in">${rec.map(x=>`<div class="card c" onclick="openProf('${x.p.id}')"><div class="flex"><div class="av" style="${avs(x.p.name)}">${esc(x.p.name[0])}</div><div><b>${esc(x.p.name)}</b><div class="mut">${esc(x.p.title)} @ ${esc(x.p.company)}</div></div></div>${x.n?`<span class="chip">${x.n} skill match${x.n>1?'es':''}</span>`:''}</div>`).join('')}</div>`)}
+  const jobs=db.jobs.slice().sort((a,b)=>b.at-a.at).slice(0,3).map(j=>`<div style="margin-bottom:8px"><b>${esc(j.title)}</b> <span class="mut">${esc(j.company)}</span></div>`).join('');
+  $('v').innerHTML=`<h1>Hi, <span class="gt">${esc(u.name.split(' ')[0])}</span></h1><div class="stats">${stat(myConns().length,'Connections')}${stat(pend+(al?inc.length:0),'Pending')}${stat(up.length,'Upcoming sessions')}</div>${top}
+  <div class="two">${sec('Latest jobs',jobs+`<button onclick="go('jobs')">See all jobs</button>`)}${sec('Upcoming sessions',up.length?up.map(sessRow).join(''):'<p class="mut">No sessions yet. Connect with an alumnus and request a meeting.</p>')}</div>
+  <p>${al?`<button class="p" onclick="go('dash')">Alumni tools: referral inbox, directory profile, post a job</button>`:`<button class="p" onclick="go('mine')">My referral requests</button>`}</p>`;countUp()}
+
+/* ---- Messages & mentorship ---- */
+let ct='chats',cc=null,lastC=0;
+function chatView(){$('v').innerHTML=`<h1>Messages and mentorship</h1><div class="tabs"><button class="tab ${ct==='chats'?'on':''}" onclick="ct='chats';chatView()">Chats</button><button class="tab ${ct==='meet'?'on':''}" onclick="ct='meet';chatView()">Meetings and history</button></div><div id="cb"></div>`;drawChat()}
+function drawChat(){const u=cur();
+  if(ct==='meet'){const m=db.sessions.filter(x=>x.student===me||x.alumni===me).sort((a,b)=>b.when-a.when),o=m.filter(x=>x.status==='Requested'||x.status==='Scheduled'),h=m.filter(x=>x.status==='Completed'||x.status==='Declined');
+    $('cb').innerHTML=sec('Upcoming and requested',o.length?o.map(sessRow).join(''):'<p class="mut">Nothing scheduled.</p>')+sec('Session history',h.length?h.map(sessRow).join(''):'<p class="mut">No past sessions yet.</p>');return}
+  const cons=myConns();lastC=cons.length;
+  if(!cons.length){$('cb').innerHTML=sec('No connections yet','<p class="mut">Open Explore, pick an alumnus and press Connect. Once they accept, you can chat and book mentorship sessions here.</p>');return}
+  if(!cc||!cons.includes(cc))cc=cons[0];const o=U(cc);
+  $('cb').innerHTML=`<div class="chat"><div class="card">${cons.map(id=>`<div class="cl ${id===cc?'on':''}" onclick="cc='${id}';drawChat()"><b>${esc(U(id).name)}</b><div class="mut">${U(id).role}</div></div>`).join('')}</div><div class="card"><div class="flex sp"><div><h2 style="margin:0">${esc(o.name)}</h2>${prefs(o).showEmail?`<div class="mut">${esc(o.email)}</div>`:''}</div>${u.role==='student'?`<button onclick="meetModal('${cc}')">Request meeting</button>`:''}</div><div class="msgs" id="msgs"></div><form class="flex" onsubmit="sendMsg(event)"><input id="mi" placeholder="Type a message..." autocomplete="off"><button class="p">Send</button></form></div></div>`;drawMsgs()}
+function drawMsgs(){const t=db.msgs.filter(m=>(m.from===me&&m.to===cc)||(m.from===cc&&m.to===me));
+  $('msgs').innerHTML=t.length?t.map(m=>`<div class="b ${m.from===me?'me':''}">${esc(m.text)}<div class="mut">${ago(m.at)}</div></div>`).join(''):'<p class="mut">Say hello!</p>';$('msgs').scrollTop=1e6}
+function sendMsg(e){e.preventDefault();const i=$('mi'),v=i.value.trim();if(!v)return;db.msgs.push({id:uid(),from:me,to:cc,text:v,at:Date.now()});save();i.value='';drawMsgs()}
+function meetModal(aid){const d=new Date(Date.now()+864e5);d.setMinutes(0);const iso=new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,16);
+  modal(`<h2>Request a mentorship session</h2><p class="mut">with ${esc(U(aid).name)}</p><input id="mt" placeholder="Topic (e.g. Resume review)"><input id="mw" type="datetime-local" value="${iso}" style="margin-top:8px"><div class="flex" style="margin-top:10px"><button onclick="closeM()">Cancel</button><button class="p" style="margin-left:auto" onclick="meetReq('${aid}')">Send meeting request</button></div>`)}
+function meetReq(aid){const t=$('mt').value.trim(),w=new Date($('mw').value).getTime();if(t.length<3)return toast('Add a topic');if(!w||w<Date.now())return toast('Pick a future date and time');
+  db.sessions.push({id:uid(),student:me,alumni:aid,topic:t,when:w,status:'Requested'});save();closeM();ct='meet';chatView();toast('Meeting request sent')}
+
+/* ---- Community ---- */
+let cf='All';const openP={};
+function commView(){$('v').innerHTML=`<h1>Community</h1><form class="card" onsubmit="newPost(event)" style="margin-bottom:16px"><div class="row"><select id="pt"><option>Post</option><option>Question</option><option>Event</option><option>Success story</option></select><input id="pd" type="datetime-local" title="Event date (events only)"></div><textarea id="px" rows="2" placeholder="Share an update, ask a question, announce an event or a success story..."></textarea><button class="p">Publish</button></form><div class="tabs">${['All','Post','Question','Event','Success story'].map(t=>`<button class="tab ${cf===t?'on':''}" onclick="cf='${t}';commView()">${t==='All'?'All':t==='Success story'?'Success stories':t+'s'}</button>`).join('')}</div><div id="feed"></div>`;drawFeed()}
+function drawFeed(){const L=db.posts.filter(p=>cf==='All'||p.type===cf).sort((a,b)=>b.at-a.at);
+  $('feed').innerHTML=L.map(p=>{const a=U(p.by)||{name:'Member',role:''};return `<div class="card post"><div class="flex"><div class="av" style="${avs(a.name)}">${esc(a.name[0])}</div><div><b>${esc(a.name)}</b> <span class="mut">${a.role} · ${ago(p.at)}</span></div><span class="chip" style="margin-left:auto">${p.type}</span></div><p>${esc(p.text)}</p>${p.when?`<span class="chip">${new Date(p.when).toLocaleString()}</span>`:''}<div class="flex" style="margin-top:6px"><button onclick="likePost('${p.id}')">${p.likes.includes(me)?'♥':'♡'} ${p.likes.length}</button><button onclick="openP['${p.id}']=!openP['${p.id}'];drawFeed()">${p.type==='Question'?'Answers':'Replies'} (${p.replies.length})</button></div>${openP[p.id]?`<div class="rep">${p.replies.map(r=>`<p><b>${esc((U(r.by)||{}).name)}</b> <span class="mut">${ago(r.at)}</span><br>${esc(r.text)}</p>`).join('')}<form class="flex" onsubmit="addReply(event,'${p.id}')"><input placeholder="Write a reply..."><button class="p">Reply</button></form></div>`:''}</div>`}).join('')||'<p class="mut">Nothing here yet. Be the first to post!</p>'}
+function newPost(e){e.preventDefault();const t=$('px').value.trim(),ty=$('pt').value,w=new Date($('pd').value).getTime();
+  if(t.length<3)return toast('Write something first');if(ty==='Event'&&!w)return toast('Pick a date for the event');
+  db.posts.push({id:uid(),by:me,type:ty,text:t,when:ty==='Event'?w:0,at:Date.now(),likes:[],replies:[]});save();commView();toast('Published')}
+function likePost(id){const p=db.posts.find(x=>x.id===id),i=p.likes.indexOf(me);i>-1?p.likes.splice(i,1):p.likes.push(me);save();drawFeed()}
+function addReply(e,id){e.preventDefault();const v=e.target.querySelector('input').value.trim();if(!v)return;db.posts.find(x=>x.id===id).replies.push({by:me,text:v,at:Date.now()});save();drawFeed()}
+
+/* ---- Jobs & internships: tabs, saved, applied ---- */
+let jt='All';
+function jobsView(){const st=cur().role==='student',sv=db.sj[me]||[],ap=db.ap[me]||[];
+  let L=db.jobs.slice().sort((a,b)=>b.at-a.at);if(jt==='Saved')L=L.filter(j=>sv.includes(j.id));if(jt==='Applied')L=L.filter(j=>ap.includes(j.id));if(jt==='Internships')L=L.filter(j=>/intern/i.test(j.title));
+  $('v').innerHTML=`<h1>Jobs and internships</h1><div class="tabs">${['All','Internships','Saved','Applied'].map(t=>`<button class="tab ${jt===t?'on':''}" onclick="jt='${t}';jobsView()">${t}${t==='Saved'?' ('+sv.length+')':t==='Applied'?' ('+ap.length+')':''}</button>`).join('')}</div><div class="grid in">${L.map(j=>`<div class="card"><div class="flex sp"><h2>${esc(j.title)}</h2><button title="Save job" onclick="saveJob('${j.id}')" style="padding:2px 10px">${sv.includes(j.id)?'♥':'♡'}</button></div><div style="color:var(--pri)">${esc(j.company)}</div><p>${esc(j.desc)}</p><p class="mut">Posted by ${esc((U(j.by)||{}).name)}</p><div class="flex"><button onclick="applyJob('${j.id}')">${ap.includes(j.id)?'Applied ✓':'Apply'}</button>${st?`<button class="p" style="margin-left:auto" onclick="askJob('${j.id}')">Ask for referral</button>`:''}</div></div>`).join('')||'<p class="mut">Nothing here yet.</p>'}</div>`}
+function saveJob(id){const a=db.sj[me]=db.sj[me]||[],i=a.indexOf(id);i>-1?a.splice(i,1):a.push(id);save();jobsView()}
+function applyJob(id){const j=db.jobs.find(x=>x.id===id),a=db.ap[me]=db.ap[me]||[];if(!a.includes(id))a.push(id);save();jobsView();toast('Marked as applied');try{window.open(j.link,'_blank','noopener')}catch(e){}}
+
+/* ---- Profile & settings ---- */
+const tg=(k,l,v,on)=>on?`<label class="flex" style="margin:8px 0"><input type="checkbox" ${v?'checked':''} onchange="setPref('${k}',this.checked)"><span>${l}</span></label>`:'';
+function profView(){const u=cur(),p=prefs(u),al=u.role==='alumni';
+  $('v').innerHTML=`<h1>My profile and settings</h1><div class="two"><form class="card" onsubmit="saveMe(event)"><h2>Profile</h2><input name="name" placeholder="Full name" value="${esc(u.name)}"><input name="headline" placeholder="Headline (e.g. 3rd-year CSE student)" value="${esc(u.headline||'')}"><input name="skills" placeholder="Skills, comma separated" value="${esc((u.skills||[]).join(', '))}"><textarea name="bio" rows="3" placeholder="About you">${esc(u.bio||'')}</textarea><label class="mut">Resume (PDF or Word, max 300 KB)</label><input type="file" id="rf" accept=".pdf,.doc,.docx">${u.resume?`<p class="mut">${esc(u.resume.name)} · <a href="${u.resume.data}" download="${esc(u.resume.name)}">Download</a> · <a href="#" onclick="delResume();return false">Remove</a></p>`:''}<button class="p">Save profile</button></form>
+  <div><div class="card" style="margin-bottom:16px"><h2>Privacy</h2>${tg('visible','Show me in the alumni directory',p.visible,al)}${tg('allowConn','Allow connection requests',p.allowConn,al)}${tg('showEmail','Show my email to my connections',p.showEmail,true)}</div><div class="card" style="margin-bottom:16px"><h2>Notifications</h2>${tg('nConn','Connection requests',p.nConn,true)}${tg('nMsg','New messages',p.nMsg,true)}${tg('nSess','Session updates',p.nSess,true)}${tg('nComm','Community replies',p.nComm,true)}</div>${al?`<button onclick="go('dash')">Edit directory profile and post jobs</button>`:`<button onclick="go('mine')">My referral requests</button>`}</div></div>`}
+function setPref(k,v){const u=cur();u.set=Object.assign(prefs(u),{[k]:v});save();toast('Setting saved')}
+function saveMe(e){e.preventDefault();const f=new FormData(e.target),u=cur(),n=f.get('name').trim();if(n.length<2)return toast('Enter your full name');
+  u.name=n;u.headline=f.get('headline').trim();u.skills=f.get('skills').split(',').map(x=>x.trim()).filter(Boolean);u.bio=f.get('bio').trim();
+  const pr=db.profiles.find(x=>x.user===me);if(pr)pr.name=n;const file=$('rf').files[0];
+  const done=()=>{save();render();toast('Profile saved')};
+  if(!file)return done();if(file.size>307200)return toast('Resume must be under 300 KB');
+  const r=new FileReader();r.onload=()=>{u.resume={name:file.name,data:r.result};try{done()}catch(x){toast('Could not store resume')}};r.readAsDataURL(file)}
+function delResume(){delete cur().resume;save();profView();toast('Resume removed')}
+
+/* live sync across tabs + notification toasts */
+function live(){if(!cur())return;
+  if(view==='chat'&&ct==='chats'&&$('msgs')&&myConns().length===lastC)drawMsgs();else if(view==='chat')chatView();
+  else if(view==='comm'&&$('feed'))drawFeed();else if(['home','mine','dash','jobs'].includes(view))render()}
+window.addEventListener('storage',function(e){if(e.key!==K||!cur())return;const m0=db.msgs.length,c0=db.conns.length;db=load();const pf=prefs(cur());
+  if(db.msgs.length>m0){const m=db.msgs[db.msgs.length-1];if(m.to===me&&pf.nMsg&&!(view==='chat'&&cc===m.from))toast('New message from '+U(m.from).name)}
+  if(db.conns.length>c0){const c=db.conns[db.conns.length-1];if(c.to===me&&pf.nConn)toast(U(c.from).name+' sent you a connection request')}
+  live()});
+
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM()});
+render();
+</script>
+</body>
+</html>
